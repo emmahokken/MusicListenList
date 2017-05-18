@@ -1,0 +1,308 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AEB2943C1ECDC51F0059542D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB2943B1ECDC51F0059542D /* AppDelegate.swift */; };
+		AEB2943E1ECDC51F0059542D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB2943D1ECDC51F0059542D /* ViewController.swift */; };
+		AEB294411ECDC51F0059542D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB2943F1ECDC51F0059542D /* Main.storyboard */; };
+		AEB294431ECDC51F0059542D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEB294421ECDC51F0059542D /* Assets.xcassets */; };
+		AEB294461ECDC51F0059542D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB294441ECDC51F0059542D /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AEB294381ECDC51F0059542D /* emmahokken-pset6-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "emmahokken-pset6-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB2943B1ECDC51F0059542D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AEB2943D1ECDC51F0059542D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AEB294401ECDC51F0059542D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AEB294421ECDC51F0059542D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AEB294451ECDC51F0059542D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AEB294471ECDC51F0059542D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AEB294351ECDC51F0059542D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AEB2942F1ECDC51F0059542D = {
+			isa = PBXGroup;
+			children = (
+				AEB2943A1ECDC51F0059542D /* emmahokken-pset6-2 */,
+				AEB294391ECDC51F0059542D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AEB294391ECDC51F0059542D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AEB294381ECDC51F0059542D /* emmahokken-pset6-2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AEB2943A1ECDC51F0059542D /* emmahokken-pset6-2 */ = {
+			isa = PBXGroup;
+			children = (
+				AEB2943B1ECDC51F0059542D /* AppDelegate.swift */,
+				AEB2943D1ECDC51F0059542D /* ViewController.swift */,
+				AEB2943F1ECDC51F0059542D /* Main.storyboard */,
+				AEB294421ECDC51F0059542D /* Assets.xcassets */,
+				AEB294441ECDC51F0059542D /* LaunchScreen.storyboard */,
+				AEB294471ECDC51F0059542D /* Info.plist */,
+			);
+			path = "emmahokken-pset6-2";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AEB294371ECDC51F0059542D /* emmahokken-pset6-2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEB2944A1ECDC51F0059542D /* Build configuration list for PBXNativeTarget "emmahokken-pset6-2" */;
+			buildPhases = (
+				AEB294341ECDC51F0059542D /* Sources */,
+				AEB294351ECDC51F0059542D /* Frameworks */,
+				AEB294361ECDC51F0059542D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "emmahokken-pset6-2";
+			productName = "emmahokken-pset6-2";
+			productReference = AEB294381ECDC51F0059542D /* emmahokken-pset6-2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AEB294301ECDC51F0059542D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Emma Hokken";
+				TargetAttributes = {
+					AEB294371ECDC51F0059542D = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AEB294331ECDC51F0059542D /* Build configuration list for PBXProject "emmahokken-pset6-2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AEB2942F1ECDC51F0059542D;
+			productRefGroup = AEB294391ECDC51F0059542D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AEB294371ECDC51F0059542D /* emmahokken-pset6-2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AEB294361ECDC51F0059542D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEB294461ECDC51F0059542D /* LaunchScreen.storyboard in Resources */,
+				AEB294431ECDC51F0059542D /* Assets.xcassets in Resources */,
+				AEB294411ECDC51F0059542D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AEB294341ECDC51F0059542D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEB2943E1ECDC51F0059542D /* ViewController.swift in Sources */,
+				AEB2943C1ECDC51F0059542D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AEB2943F1ECDC51F0059542D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AEB294401ECDC51F0059542D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AEB294441ECDC51F0059542D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AEB294451ECDC51F0059542D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AEB294481ECDC51F0059542D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AEB294491ECDC51F0059542D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AEB2944B1ECDC51F0059542D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "emmahokken-pset6-2/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nl.mprog.emmahokken-pset6-2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AEB2944C1ECDC51F0059542D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "emmahokken-pset6-2/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nl.mprog.emmahokken-pset6-2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AEB294331ECDC51F0059542D /* Build configuration list for PBXProject "emmahokken-pset6-2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEB294481ECDC51F0059542D /* Debug */,
+				AEB294491ECDC51F0059542D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AEB2944A1ECDC51F0059542D /* Build configuration list for PBXNativeTarget "emmahokken-pset6-2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEB2944B1ECDC51F0059542D /* Debug */,
+				AEB2944C1ECDC51F0059542D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AEB294301ECDC51F0059542D /* Project object */;
+}
