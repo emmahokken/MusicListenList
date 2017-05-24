@@ -7,21 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C54BD1E8F5AF37B5B9E8EFC /* Pods_emmahokken_pset6_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BF5D62C2B112A2F6F972CD /* Pods_emmahokken_pset6_2.framework */; };
 		AEB2943C1ECDC51F0059542D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB2943B1ECDC51F0059542D /* AppDelegate.swift */; };
-		AEB2943E1ECDC51F0059542D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB2943D1ECDC51F0059542D /* ViewController.swift */; };
 		AEB294411ECDC51F0059542D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB2943F1ECDC51F0059542D /* Main.storyboard */; };
 		AEB294431ECDC51F0059542D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEB294421ECDC51F0059542D /* Assets.xcassets */; };
 		AEB294461ECDC51F0059542D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB294441ECDC51F0059542D /* LaunchScreen.storyboard */; };
+		AEB294501ECDCA3D0059542D /* clef.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AEB2944F1ECDCA3D0059542D /* clef.jpg */; };
+		AEB294521ECDCC8F0059542D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEB294511ECDCC8F0059542D /* GoogleService-Info.plist */; };
+		AEB294561ECDCE4C0059542D /* MusicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB294551ECDCE4C0059542D /* MusicViewCell.swift */; };
+		AEB2945A1ECF18B60059542D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB294591ECF18B60059542D /* DetailViewController.swift */; };
+		AEB2945C1ECF191A0059542D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB2945B1ECF191A0059542D /* LogInViewController.swift */; };
+		AEB2945E1ECF1AE90059542D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB2945D1ECF1AE90059542D /* SearchViewController.swift */; };
+		AEB294601ED44B440059542D /* default-artwork.png in Resources */ = {isa = PBXBuildFile; fileRef = AEB2945F1ED44B440059542D /* default-artwork.png */; };
+		AEB294621ED5A1480059542D /* MusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB294611ED5A1480059542D /* MusicItem.swift */; };
+		AEB294641ED5A3FE0059542D /* backupSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB294631ED5A3FE0059542D /* backupSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		81BF5D62C2B112A2F6F972CD /* Pods_emmahokken_pset6_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_emmahokken_pset6_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB294381ECDC51F0059542D /* emmahokken-pset6-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "emmahokken-pset6-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB2943B1ECDC51F0059542D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AEB2943D1ECDC51F0059542D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AEB294401ECDC51F0059542D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AEB294421ECDC51F0059542D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEB294451ECDC51F0059542D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEB294471ECDC51F0059542D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEB2944F1ECDCA3D0059542D /* clef.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = clef.jpg; path = ../../../../Downloads/clef.jpg; sourceTree = "<group>"; };
+		AEB294511ECDCC8F0059542D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AEB294551ECDCE4C0059542D /* MusicViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicViewCell.swift; sourceTree = "<group>"; };
+		AEB294591ECF18B60059542D /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AEB2945B1ECF191A0059542D /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		AEB2945D1ECF1AE90059542D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		AEB2945F1ED44B440059542D /* default-artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-artwork.png"; sourceTree = "<group>"; };
+		AEB294611ED5A1480059542D /* MusicItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicItem.swift; sourceTree = "<group>"; };
+		AEB294631ED5A3FE0059542D /* backupSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = backupSearchView.swift; sourceTree = "<group>"; };
+		C97F932A9929E4E1AABCBE7E /* Pods-emmahokken-pset6-2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emmahokken-pset6-2.release.xcconfig"; path = "Pods/Target Support Files/Pods-emmahokken-pset6-2/Pods-emmahokken-pset6-2.release.xcconfig"; sourceTree = "<group>"; };
+		EF20477987B09B3CC907EB3F /* Pods-emmahokken-pset6-2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emmahokken-pset6-2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-emmahokken-pset6-2/Pods-emmahokken-pset6-2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +49,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C54BD1E8F5AF37B5B9E8EFC /* Pods_emmahokken_pset6_2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63DB4E05FB37F7717DF10FA9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EF20477987B09B3CC907EB3F /* Pods-emmahokken-pset6-2.debug.xcconfig */,
+				C97F932A9929E4E1AABCBE7E /* Pods-emmahokken-pset6-2.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AEB2942F1ECDC51F0059542D = {
 			isa = PBXGroup;
 			children = (
 				AEB2943A1ECDC51F0059542D /* emmahokken-pset6-2 */,
 				AEB294391ECDC51F0059542D /* Products */,
+				63DB4E05FB37F7717DF10FA9 /* Pods */,
+				C4242A1735FC1F3F889BE43B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +86,30 @@
 		AEB2943A1ECDC51F0059542D /* emmahokken-pset6-2 */ = {
 			isa = PBXGroup;
 			children = (
+				AEB294511ECDCC8F0059542D /* GoogleService-Info.plist */,
 				AEB2943B1ECDC51F0059542D /* AppDelegate.swift */,
-				AEB2943D1ECDC51F0059542D /* ViewController.swift */,
+				AEB294591ECF18B60059542D /* DetailViewController.swift */,
 				AEB2943F1ECDC51F0059542D /* Main.storyboard */,
+				AEB294611ED5A1480059542D /* MusicItem.swift */,
+				AEB294551ECDCE4C0059542D /* MusicViewCell.swift */,
+				AEB2945F1ED44B440059542D /* default-artwork.png */,
+				AEB2945B1ECF191A0059542D /* LogInViewController.swift */,
+				AEB2945D1ECF1AE90059542D /* SearchViewController.swift */,
+				AEB294631ED5A3FE0059542D /* backupSearchView.swift */,
+				AEB2944F1ECDCA3D0059542D /* clef.jpg */,
 				AEB294421ECDC51F0059542D /* Assets.xcassets */,
 				AEB294441ECDC51F0059542D /* LaunchScreen.storyboard */,
 				AEB294471ECDC51F0059542D /* Info.plist */,
 			);
 			path = "emmahokken-pset6-2";
+			sourceTree = "<group>";
+		};
+		C4242A1735FC1F3F889BE43B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				81BF5D62C2B112A2F6F972CD /* Pods_emmahokken_pset6_2.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +119,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AEB2944A1ECDC51F0059542D /* Build configuration list for PBXNativeTarget "emmahokken-pset6-2" */;
 			buildPhases = (
+				DAE2A81A55373E5695846364 /* [CP] Check Pods Manifest.lock */,
 				AEB294341ECDC51F0059542D /* Sources */,
 				AEB294351ECDC51F0059542D /* Frameworks */,
 				AEB294361ECDC51F0059542D /* Resources */,
+				11B04E14D4777DA082C93556 /* [CP] Embed Pods Frameworks */,
+				04AFA0882325CF30712A9B6A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,20 +175,76 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEB294461ECDC51F0059542D /* LaunchScreen.storyboard in Resources */,
+				AEB294501ECDCA3D0059542D /* clef.jpg in Resources */,
+				AEB294521ECDCC8F0059542D /* GoogleService-Info.plist in Resources */,
 				AEB294431ECDC51F0059542D /* Assets.xcassets in Resources */,
+				AEB294601ED44B440059542D /* default-artwork.png in Resources */,
 				AEB294411ECDC51F0059542D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		04AFA0882325CF30712A9B6A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-emmahokken-pset6-2/Pods-emmahokken-pset6-2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		11B04E14D4777DA082C93556 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-emmahokken-pset6-2/Pods-emmahokken-pset6-2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAE2A81A55373E5695846364 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AEB294341ECDC51F0059542D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEB2943E1ECDC51F0059542D /* ViewController.swift in Sources */,
+				AEB294621ED5A1480059542D /* MusicItem.swift in Sources */,
+				AEB2945E1ECF1AE90059542D /* SearchViewController.swift in Sources */,
+				AEB2945A1ECF18B60059542D /* DetailViewController.swift in Sources */,
+				AEB294561ECDCE4C0059542D /* MusicViewCell.swift in Sources */,
+				AEB2945C1ECF191A0059542D /* LogInViewController.swift in Sources */,
 				AEB2943C1ECDC51F0059542D /* AppDelegate.swift in Sources */,
+				AEB294641ED5A3FE0059542D /* backupSearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +367,7 @@
 		};
 		AEB2944B1ECDC51F0059542D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF20477987B09B3CC907EB3F /* Pods-emmahokken-pset6-2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "emmahokken-pset6-2/Info.plist";
@@ -272,6 +380,7 @@
 		};
 		AEB2944C1ECDC51F0059542D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C97F932A9929E4E1AABCBE7E /* Pods-emmahokken-pset6-2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "emmahokken-pset6-2/Info.plist";
@@ -301,6 +410,7 @@
 				AEB2944C1ECDC51F0059542D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
