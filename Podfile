@@ -7,8 +7,8 @@ target 'emmahokken-pset6-2' do
 
   # Pods for emmahokken-pset6-2
 
-pod 'Firebase/Core'
-pod 'Firebase/Database'
-pod 'Firebase/Auth'
+pod 'Firebase/Core’, ‘~> 3.15.0’
+pod 'Firebase/Database’, ‘~> 3.15.0’
+pod 'Firebase/Auth’, ‘~> 3.15.0’
 
 end

@@ -6,39 +6,39 @@
 //  Copyright © 2017 Emma Hokken. All rights reserved.
 //
 
+
+// TO DO:
+// Sign out user bug fix: issues with segue
+// Buy link bug fix
+// Log in User view fix
+
+
 import UIKit
 import Firebase
 
 /// View Controller allows user to search for music
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
-    // MARK: Variales
-    var ref = Database.database().reference().child("music")
-//    var searches = [String]()
-    
+    // MARK: - Variales
+    var ref: FIRDatabaseReference!
     var items: [MusicItem] = []
-    
-    var henk = [NSDictionary]()
-    
-    var currentIndex: Int?
-
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        ref = FIRDatabase.database().reference().child("music")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
         
         searchBar.delegate = self
         
-
         readDatabase()
-
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,9 +46,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Functions
+    // MARK: - Actions
     
-    /// search for music when search button clicked
+    
+    
+    // MARK: - Functions
+    
+    /// Search for music when search button is clicked.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         lookupMusic(title: searchBar.text!)
         view.endEditing(true)
@@ -59,13 +63,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     /// allows user to sign out
     func signOut() {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            performSegue(withIdentifier: "signout", sender: self)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+        if FIRAuth.auth()?.currentUser != nil {
+            do {
+                try? FIRAuth.auth()?.signOut()
+                performSegue(withIdentifier: "signOut", sender: nil)
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
         }
+        
         
     }
     
@@ -123,23 +129,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.present(alert, animated: true, completion: nil)
         
     }
-    
-    /// Get poster from url [1].
-    func getArtwork(art: String) -> UIImage {
-        
-        var address = art.replacingOccurrences(of: "http://", with: "https://")
-
-        // Convert string to url.
-        let url = URL(string: address)
-        
-        // Get contents of url.
-        let data = try! Data(contentsOf: url!)
-        
-        // Convert data into image.
-        let image = UIImage(data: data)
-        
-        return image!
-    }
 
     /// Reads information from Firebase Database.
     func readDatabase() {
@@ -152,7 +141,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             // Get information for each of the children in the "music" table
             for item in snapshot.children {
                 
-                let musicItem = MusicItem(snapshot: item as! DataSnapshot)
+                let musicItem = MusicItem(snapshot: item as! FIRDataSnapshot)
                 
                 // Add new item to struct.
                 newItems.append(musicItem)
@@ -168,7 +157,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    // MARK: TABLE VIEW FUNCTIONS
+    // MARK: - Table View Functions
     
     /// Determines number of rows in tableView.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -185,8 +174,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let musicItem = items[indexPath.row]
         
         // Populate elements in cell.
-        cell.artistLabel.text = musicItem.artistName
-        cell.albumLabel.text = musicItem.collectionName
+        cell.trackNameLabel.text = musicItem.trackName
+        cell.artistNameLabel.text = musicItem.artistName
         // Get the image from url.
         let getArtwork = URLSession.shared.dataTask(with: URL(string: musicItem.artworkUrl30)!) { (data, response, error) in
             
@@ -225,13 +214,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return true
     }
     
+    
+    
     /// Allows user to swipe left to delete items.
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
-            items.remove(at: indexPath.row)
-            tableView.reloadData()
+            let musicItem = items[indexPath.row]
+            musicItem.ref?.removeValue()
         }
     }
+    
+    
     
     // MARK: - Segues
     
@@ -245,7 +239,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Convert trackCount integer to String.
         let tracount = String(musicItem.trackCount)
-        print(musicItem.artistName, "+", musicItem.collectionName, "+ track: ", musicItem.trackName, "+", tracount, "+", musicItem.trackViewUrl)
         
         // Take information from cell with you to next view.
         viewMusic.album = musicItem.collectionName
@@ -255,7 +248,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         viewMusic.buy = musicItem.trackViewUrl
         
         // Get the image from url.
-        let getArtwork = URLSession.shared.dataTask(with: URL(string: musicItem.artworkUrl30)!) { (data, response, error) in
+        let getArtwork = URLSession.shared.dataTask(with: URL(string: musicItem.artworkUrl100)!) { (data, response, error) in
             
             // If no image was found, display default image
             if error != nil {

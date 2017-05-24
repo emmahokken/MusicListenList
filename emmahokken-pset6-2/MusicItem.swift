@@ -9,6 +9,8 @@
 import Foundation
 import Firebase
 
+
+// Form of the Music Item that is needed throughout the app.
 struct MusicItem {
     
     let key: String
@@ -18,10 +20,11 @@ struct MusicItem {
     let trackName: String
     let trackViewUrl: String
     let artworkUrl30: String
+    let artworkUrl100: String
     
-    let ref: DatabaseReference?
+    let ref: FIRDatabaseReference?
     
-    init(artistName: String, collectionName: String, trackCount: Int, trackName: String, trackViewUrl: String, artworkUrl30: String, key: String = "") {
+    init(artistName: String, collectionName: String, trackCount: Int, trackName: String, trackViewUrl: String, artworkUrl30: String, artworkUrl100: String, key: String = "") {
         self.key = key
         self.artistName = artistName
         self.collectionName = collectionName
@@ -29,10 +32,11 @@ struct MusicItem {
         self.trackName = trackName
         self.trackViewUrl = trackViewUrl
         self.artworkUrl30 = artworkUrl30
+        self.artworkUrl100 = artworkUrl100
         self.ref = nil
     }
     
-    init(snapshot: DataSnapshot) {
+    init(snapshot: FIRDataSnapshot) {
         key = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
         artistName = snapshotValue["artistName"] as! String
@@ -41,6 +45,7 @@ struct MusicItem {
         trackName = snapshotValue["trackName"] as! String
         trackViewUrl = snapshotValue["trackViewUrl"] as! String
         artworkUrl30 = snapshotValue["artworkUrl30"] as! String
+        artworkUrl100 = snapshotValue["artworkUrl100"] as! String
         ref = snapshot.ref
     }
     
@@ -51,7 +56,8 @@ struct MusicItem {
             "trackCount": trackCount,
             "trackName": trackName,
             "trackViewUrl": trackViewUrl,
-            "artworkUrl30": artworkUrl30
+            "artworkUrl30": artworkUrl30,
+            "artworkUrl100": artworkUrl100
         ]
     }
 

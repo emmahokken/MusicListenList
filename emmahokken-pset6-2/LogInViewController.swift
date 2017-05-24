@@ -12,7 +12,7 @@ import Firebase
 class LogInViewController: UIViewController {
 
     // MARK: - Variables
-    var dataRef = Database.database().reference()
+    var ref: FIRDatabaseReference!
     
     // MARK: - Outlets
     @IBOutlet weak var signInButton: UIButton!
@@ -24,7 +24,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        ref = FIRDatabase.database().reference()
         stayLoggedIn()
         
     }
@@ -109,7 +109,7 @@ class LogInViewController: UIViewController {
     
     /// allows user to register
     func signUpUser(email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             // if the error is not empty, print it
             if error != nil {
                 print(error!)
@@ -119,7 +119,7 @@ class LogInViewController: UIViewController {
                 return
             }
             
-            let userRef = self.dataRef.child("users").child("uid")
+            let userRef = self.ref.child("users").child("uid")
             let values = ["email": email, "password": password]
             
             // update new info into table
@@ -141,7 +141,7 @@ class LogInViewController: UIViewController {
     
     /// allows user to log in
     func login() {
-        Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in
+        FIRAuth.auth()?.signIn(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in
             if error != nil {
                 print(error!)
                 return
@@ -156,7 +156,7 @@ class LogInViewController: UIViewController {
     
     /// let user stay logged in [2]
     func stayLoggedIn() {
-        let currentUser = Auth.auth().currentUser
+        let currentUser = FIRAuth.auth()?.currentUser
         if currentUser != nil {
             performSegue(withIdentifier: "signIn", sender: nil)
         }

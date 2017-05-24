@@ -25,7 +25,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var albumLabel: UILabel!
     @IBOutlet weak var trackCountLabel: UILabel!
-    @IBOutlet weak var trackNameLabel: UILabel!
 
     @IBOutlet weak var buyButton: UIButton!
     
@@ -43,7 +42,6 @@ class DetailViewController: UIViewController {
         artistLabel.text = artist
         albumLabel.text = album
         trackCountLabel.text = count
-        trackNameLabel.text = name
         
     }
 
@@ -62,10 +60,9 @@ class DetailViewController: UIViewController {
     
     /// allows user to sign out
     func signOut() {
-        let firebaseAuth = Auth.auth()
         do {
-            try firebaseAuth.signOut()
-            performSegue(withIdentifier: "signout", sender: self)
+            try FIRAuth.auth()?.signOut()
+            performSegue(withIdentifier: "signOut", sender: name)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
