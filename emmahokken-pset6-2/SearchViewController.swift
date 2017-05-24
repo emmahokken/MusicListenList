@@ -37,30 +37,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
         
         searchBar.delegate = self
-        
-        
-        
-//        // 1
-//        ref.observe(.value, with: { snapshot in
-//            // 2
-//            var newItems: [MusicItem] = []
-//            
-//            if snapshot is NSDictionary {
-//                
-//            }
-//           
-//            
-//            // 3
-//            for item in snapshot.children {
-//                // 4
-//                let musicItem = MusicItem(snapshot: item as! DataSnapshot)
-//                newItems.append(musicItem)
-//            }
-//            
-//            // 5
-//            self.items = newItems
-//            self.tableView.reloadData()
-//        })
+
 
     }
 
