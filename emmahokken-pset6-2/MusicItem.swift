@@ -14,14 +14,14 @@ struct MusicItem {
     let key: String
     let artistName: String
     let collectionName: String
-    let trackCount: String
+    let trackCount: Int
     let trackName: String
     let trackViewUrl: String
     let artworkUrl30: String
     
     let ref: DatabaseReference?
     
-    init(artistName: String, collectionName: String, trackCount: String, trackName: String, trackViewUrl: String, artworkUrl30: String, key: String = "") {
+    init(artistName: String, collectionName: String, trackCount: Int, trackName: String, trackViewUrl: String, artworkUrl30: String, key: String = "") {
         self.key = key
         self.artistName = artistName
         self.collectionName = collectionName
@@ -37,7 +37,7 @@ struct MusicItem {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         artistName = snapshotValue["artistName"] as! String
         collectionName = snapshotValue["collectionName"] as! String
-        trackCount = snapshotValue["trackCount"] as! String
+        trackCount = snapshotValue["trackCount"] as! Int
         trackName = snapshotValue["trackName"] as! String
         trackViewUrl = snapshotValue["trackViewUrl"] as! String
         artworkUrl30 = snapshotValue["artworkUrl30"] as! String

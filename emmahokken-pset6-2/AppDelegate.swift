@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // source: https://www.youtube.com/watch?v=Ehqnf1kHNGw
         UIApplication.shared.statusBarStyle = .lightContent
 
+        
         return true
     }
     

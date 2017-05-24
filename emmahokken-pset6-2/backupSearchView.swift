@@ -286,3 +286,58 @@
 //    //                        self.addMusic(musicDictionary: musicDictionary)
 //    
 //}
+
+
+
+
+
+
+//        databbaseHandle = ref.child("music").observe(.childAdded, with: { (snapshot) in
+//
+//            // Convert data into string
+//            let song = snapshot.value as? String
+//
+//            if let actualSong = song {
+//
+//                // Append data to music data array
+//                self.searches.append(actualSong)
+//
+//                // Reload table view
+//                self.tableView.reloadData()
+//            }
+//
+//        })
+
+
+
+
+
+
+
+//        Database.database().reference().child("music").observe(.childAdded, with: { (snapshot) in
+//            if let henk = (snapshot.value as? NSDictionary) {
+//                print("Hier stat HENK!!!!!!!!")
+//
+//                self.henk.append(["artistName": henk["artistName"]!])
+//                self.tableView.reloadData()
+//            }
+//
+//        }) { (Error) in
+//            return
+//        }
+
+
+
+
+
+
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destinationViewController.
+ // Pass the selected object to the new view controller.
+ }
+ */
+

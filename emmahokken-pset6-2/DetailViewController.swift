@@ -13,14 +13,22 @@ import Firebase
 class DetailViewController: UIViewController {
 
     // MARK: - Variables
+    var album: String = ""
+    var artist: String = ""
+    var count: String = ""
+    var name: String = ""
+    var buy: String = ""
+    var art = UIImage()
     
     // MARK: - Outlets
     @IBOutlet weak var albumArtwork: UIImageView!
-    @IBOutlet weak var artistName: UILabel!
-    @IBOutlet weak var albumName: UILabel!
-    @IBOutlet weak var songsNumber: UILabel!
-    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var albumLabel: UILabel!
+    @IBOutlet weak var trackCountLabel: UILabel!
+    @IBOutlet weak var trackNameLabel: UILabel!
+
     @IBOutlet weak var buyButton: UIButton!
+    
     
     
     override func viewDidLoad() {
@@ -29,6 +37,14 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
         
+        navigationItem.title = name
+        
+        albumArtwork.image = art
+        artistLabel.text = artist
+        albumLabel.text = album
+        trackCountLabel.text = count
+        trackNameLabel.text = name
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,9 +52,12 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Actions
     @IBAction func buyButtonAction(_ sender: Any) {
-        
+        if let url = NSURL(string: buy) {
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil) }
     }
+    
     // MARK: - Functions
     
     /// allows user to sign out
@@ -52,17 +71,4 @@ class DetailViewController: UIViewController {
         }
     }
     
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -147,6 +147,7 @@
 				TargetAttributes = {
 					AEB294371ECDC51F0059542D = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = HC8XAPFB5F;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -370,7 +371,9 @@
 			baseConfigurationReference = EF20477987B09B3CC907EB3F /* Pods-emmahokken-pset6-2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HC8XAPFB5F;
 				INFOPLIST_FILE = "emmahokken-pset6-2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.mprog.emmahokken-pset6-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -383,7 +386,9 @@
 			baseConfigurationReference = C97F932A9929E4E1AABCBE7E /* Pods-emmahokken-pset6-2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HC8XAPFB5F;
 				INFOPLIST_FILE = "emmahokken-pset6-2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.mprog.emmahokken-pset6-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";

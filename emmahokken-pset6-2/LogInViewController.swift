@@ -44,65 +44,66 @@ class LogInViewController: UIViewController {
     
     @IBAction func registerButtonAction(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Register",
-                                      message: "Register",
-                                      preferredStyle: .alert)
+//        let alert = UIAlertController(title: "Register",
+//                                      message: "Register",
+//                                      preferredStyle: .alert)
+//        
+//        let saveAction = UIAlertAction(title: "Save",
+//                                       style: .default) { action in
+//                                        
+//        }
+//        
+//        let cancelAction = UIAlertAction(title: "Cancel",
+//                                         style: .default)
+//        
+//        alert.addTextField { textEmail in
+//            textEmail.placeholder = "Enter your email"
+//        }
+//        
+//        alert.addTextField { textPassword in
+//            textPassword.isSecureTextEntry = true
+//            textPassword.placeholder = "Enter your password"
+//        }
+//        
+//        alert.addAction(saveAction)
+//        alert.addAction(cancelAction)
+//        
+//        present(alert, animated: true, completion: nil)
+    
+        let alert = UIAlertController(title: "welcome", message: "enter your the username and password you'd like to use", preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "Save",
-                                       style: .default) { action in
-                                        
+        _ = alert.addTextField { (textField) in
+            textField.placeholder = "email"
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .default)
-        
-        alert.addTextField { textEmail in
-            textEmail.placeholder = "Enter your email"
+        _ = alert.addTextField { (textField) in
+            textField.placeholder = "password"
+            textField.isSecureTextEntry = true
         }
         
-        alert.addTextField { textPassword in
-            textPassword.isSecureTextEntry = true
-            textPassword.placeholder = "Enter your password"
-        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let email = alert?.textFields![0]
+            let password = alert?.textFields![1]
+            print("Text field: \(email?.text)")
+            
+            if email?.text! == "" || password?.text! == "" {
+                print("Empty String")
+            } else {
+                self.signUpUser(email: (email?.text)!, password: (password?.text)!)
+                email?.text = ""
+                
+            }
+            
+        }))
         
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
+        // allows for cancel action [1]
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            print("Cancel button tapped");
+        })
         
-        present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
-//        let alert = UIAlertController(title: "welcome", message: "enter your the username and password you'd like to use", preferredStyle: .alert)
-//        
-//        _ = alert.addTextField { (textField) in
-//            textField.placeholder = "email"
-//        }
-//        
-//        _ = alert.addTextField { (textField) in
-//            textField.placeholder = "password"
-//            textField.isSecureTextEntry = true
-//        }
-//        
-//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-//            let email = alert?.textFields![0]
-//            let password = alert?.textFields![1]
-//            print("Text field: \(email?.text)")
-//            
-//            if email?.text! == "" || password?.text! == "" {
-//                print("Empty String")
-//            } else {
-//                self.signUpUser(email: (email?.text)!, password: (password?.text)!)
-//                email?.text = ""
-//                
-//            }
-//            
-//        }))
-//        
-//        // allows for cancel action [1]
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
-//            print("Cancel button tapped");
-//        })
-//        
-//        self.present(alert, animated: true, completion: nil)
-
+    
     
     // MARK: - Functions
     
