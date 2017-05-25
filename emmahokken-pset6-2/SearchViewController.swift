@@ -8,7 +8,6 @@
 
 
 // TO DO:
-// Sign out user bug fix: issues with segue
 // Buy link bug fix
 // Log in User view fix
 
@@ -31,12 +30,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // Set reference to database.
         ref = FIRDatabase.database().reference().child("music")
         
+        // Add sign out button.
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
+        
+        // Hide default back button.
+        self.navigationItem.hidesBackButton = true
         
         searchBar.delegate = self
         
+        // Read database to load info.
         readDatabase()
         
     }
@@ -45,10 +50,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: - Actions
-    
-    
     
     // MARK: - Functions
     
@@ -61,7 +62,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableView.reloadData()
     }
     
-    /// allows user to sign out
+    /// Allows user to sign out.
     func signOut() {
         if FIRAuth.auth()?.currentUser != nil {
             do {
@@ -71,8 +72,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print(error.localizedDescription)
             }
         }
-        
-        
     }
     
     /// Allows user to search for music.
@@ -88,16 +87,17 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
             do {
                 let musicObject = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-                print(musicObject!["results"]!)
+                print((musicObject?["resultCount"]!)!)
+                
                 
                 // If there is a result, call addMusic function.
                 if let musicDictionary = (musicObject?["results"] as? [NSDictionary])?.first {
+                    print("2", musicObject!)
                     self.addMusic(musicDictionary: musicDictionary)
                 }
-                
-                // Reload tableView.
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                // If there are no results, alert user.
+                else if  (musicObject?["resultCount"] as! Int) == 0 {
+                    self.alertUser(title: "Whoops!", message: "Song not found")
                 }
             }
             catch {
@@ -126,6 +126,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("Cancel button tapped");
         })
         
+        // Present alert.
         self.present(alert, animated: true, completion: nil)
         
     }
@@ -229,48 +230,55 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - Segues
     
+    /// Prepare information for next view.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        // Determine destination.
-        let viewMusic = segue.destination as! DetailViewController
-        
-        // Create indexPath for selected row.
-        let musicItem = items[tableView.indexPathForSelectedRow!.row]
-        
-        // Convert trackCount integer to String.
-        let tracount = String(musicItem.trackCount)
-        
-        // Take information from cell with you to next view.
-        viewMusic.album = musicItem.collectionName
-        viewMusic.artist = musicItem.artistName
-        viewMusic.name = musicItem.trackName
-        viewMusic.count = tracount
-        viewMusic.buy = musicItem.trackViewUrl
-        
-        // Get the image from url.
-        let getArtwork = URLSession.shared.dataTask(with: URL(string: musicItem.artworkUrl100)!) { (data, response, error) in
+        // If the segue is towards DetailViewController [2].
+        if segue.identifier == "detail" {
+            // Determine destination.
+            let viewMusic = segue.destination as! DetailViewController
             
-            // If no image was found, display default image
-            if error != nil {
-                DispatchQueue.main.async {
-                    if let filePath = Bundle.main.path(forResource: "default-artwork", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
-                        viewMusic.albumArtwork.image = image
-                    }
-                }
-            // If image was succesfully found, give that image to next view
-            } else {
-                if let data = data {
-                    let image = UIImage(data: data)
-                    
+            // Create indexPath for selected row.
+            let musicItem = items[tableView.indexPathForSelectedRow!.row]
+            
+            // Convert trackCount integer to String.
+            let tracount = String(musicItem.trackCount)
+            
+            // Take information from cell with you to next view.
+            viewMusic.album = musicItem.collectionName
+            viewMusic.artist = musicItem.artistName
+            viewMusic.name = musicItem.trackName
+            viewMusic.count = tracount
+            viewMusic.buy = musicItem.trackViewUrl
+            
+            // Get the image from url.
+            let getArtwork = URLSession.shared.dataTask(with: URL(string: musicItem.artworkUrl100)!) { (data, response, error) in
+                
+                // If no image was found, display default image
+                if error != nil {
                     DispatchQueue.main.async {
-                        viewMusic.albumArtwork.image = image
+                        if let filePath = Bundle.main.path(forResource: "default-artwork", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
+                            viewMusic.albumArtwork.image = image
+                        }
+                    }
+                    // If image was succesfully found, give that image to next view
+                } else {
+                    if let data = data {
+                        let image = UIImage(data: data)
+                        
+                        DispatchQueue.main.async {
+                            viewMusic.albumArtwork.image = image
+                        }
                     }
                 }
             }
+            getArtwork.resume()
+            
+            
+            // If segue is towards LoginViewController.
+        } else if segue.identifier == "signOut" {
+            let signOut = segue.destination as! LogInViewController
         }
-        getArtwork.resume()
-        
-        
         
     }
     
@@ -278,5 +286,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     // MARK: - Sources
     // [1] http://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
+    // [2] https://stackoverflow.com/questions/31457300/swift-prepareforsegue-with-two-different-segues
+    
     
 }

@@ -20,13 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // source: http://stackoverflow.com/questions/26008536/navigationbar-bar-tint-and-title-text-color-in-ios-8
         
-//        UINavigationBar.appearance().barTintColor = UIColor(red:0.01, green:0.32, blue:0.53, alpha:0.0)
-//        
-//        UINavigationBar.appearance().tintColor = UIColor.white
-//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-//        
+        UINavigationBar.appearance().barTintColor = UIColor(red:0.01, green:0.32, blue:0.53, alpha:0.0)
+        
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
 //        // source: https://www.youtube.com/watch?v=Ehqnf1kHNGw
-//        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarStyle = .lightContent
 
         FIRApp.configure()
         return true

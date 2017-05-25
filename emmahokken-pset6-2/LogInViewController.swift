@@ -27,6 +27,9 @@ class LogInViewController: UIViewController {
         ref = FIRDatabase.database().reference()
         stayLoggedIn()
         
+        // Hide back button (if applicable).
+        self.navigationItem.hidesBackButton = true
+        
     }
 
     override func didReceiveMemoryWarning() {
