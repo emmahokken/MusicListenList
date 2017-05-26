@@ -12,15 +12,12 @@
 		AEB294411ECDC51F0059542D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB2943F1ECDC51F0059542D /* Main.storyboard */; };
 		AEB294431ECDC51F0059542D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEB294421ECDC51F0059542D /* Assets.xcassets */; };
 		AEB294461ECDC51F0059542D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB294441ECDC51F0059542D /* LaunchScreen.storyboard */; };
-		AEB294501ECDCA3D0059542D /* clef.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AEB2944F1ECDCA3D0059542D /* clef.jpg */; };
 		AEB294521ECDCC8F0059542D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEB294511ECDCC8F0059542D /* GoogleService-Info.plist */; };
 		AEB294561ECDCE4C0059542D /* MusicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB294551ECDCE4C0059542D /* MusicViewCell.swift */; };
 		AEB2945A1ECF18B60059542D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB294591ECF18B60059542D /* DetailViewController.swift */; };
 		AEB2945C1ECF191A0059542D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB2945B1ECF191A0059542D /* LogInViewController.swift */; };
 		AEB2945E1ECF1AE90059542D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB2945D1ECF1AE90059542D /* SearchViewController.swift */; };
-		AEB294601ED44B440059542D /* default-artwork.png in Resources */ = {isa = PBXBuildFile; fileRef = AEB2945F1ED44B440059542D /* default-artwork.png */; };
 		AEB294621ED5A1480059542D /* MusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB294611ED5A1480059542D /* MusicItem.swift */; };
-		AEB294641ED5A3FE0059542D /* backupSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB294631ED5A3FE0059542D /* backupSearchView.swift */; };
 		AEE1E8041ED8E1F2001DA9D3 /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE1E8031ED8E1F2001DA9D3 /* screenshot.png */; };
 /* End PBXBuildFile section */
 
@@ -32,15 +29,12 @@
 		AEB294421ECDC51F0059542D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEB294451ECDC51F0059542D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEB294471ECDC51F0059542D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AEB2944F1ECDCA3D0059542D /* clef.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = clef.jpg; path = ../../../../Downloads/clef.jpg; sourceTree = "<group>"; };
 		AEB294511ECDCC8F0059542D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AEB294551ECDCE4C0059542D /* MusicViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicViewCell.swift; sourceTree = "<group>"; };
 		AEB294591ECF18B60059542D /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AEB2945B1ECF191A0059542D /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		AEB2945D1ECF1AE90059542D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		AEB2945F1ED44B440059542D /* default-artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-artwork.png"; sourceTree = "<group>"; };
 		AEB294611ED5A1480059542D /* MusicItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicItem.swift; sourceTree = "<group>"; };
-		AEB294631ED5A3FE0059542D /* backupSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = backupSearchView.swift; sourceTree = "<group>"; };
 		AEE1E8031ED8E1F2001DA9D3 /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		C97F932A9929E4E1AABCBE7E /* Pods-emmahokken-pset6-2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emmahokken-pset6-2.release.xcconfig"; path = "Pods/Target Support Files/Pods-emmahokken-pset6-2/Pods-emmahokken-pset6-2.release.xcconfig"; sourceTree = "<group>"; };
 		EF20477987B09B3CC907EB3F /* Pods-emmahokken-pset6-2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emmahokken-pset6-2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-emmahokken-pset6-2/Pods-emmahokken-pset6-2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,11 +89,8 @@
 				AEB294611ED5A1480059542D /* MusicItem.swift */,
 				AEB294551ECDCE4C0059542D /* MusicViewCell.swift */,
 				AEE1E8031ED8E1F2001DA9D3 /* screenshot.png */,
-				AEB2945F1ED44B440059542D /* default-artwork.png */,
 				AEB2945B1ECF191A0059542D /* LogInViewController.swift */,
 				AEB2945D1ECF1AE90059542D /* SearchViewController.swift */,
-				AEB294631ED5A3FE0059542D /* backupSearchView.swift */,
-				AEB2944F1ECDCA3D0059542D /* clef.jpg */,
 				AEB294421ECDC51F0059542D /* Assets.xcassets */,
 				AEB294441ECDC51F0059542D /* LaunchScreen.storyboard */,
 				AEB294471ECDC51F0059542D /* Info.plist */,
@@ -179,10 +170,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEB294461ECDC51F0059542D /* LaunchScreen.storyboard in Resources */,
-				AEB294501ECDCA3D0059542D /* clef.jpg in Resources */,
 				AEB294521ECDCC8F0059542D /* GoogleService-Info.plist in Resources */,
 				AEB294431ECDC51F0059542D /* Assets.xcassets in Resources */,
-				AEB294601ED44B440059542D /* default-artwork.png in Resources */,
 				AEE1E8041ED8E1F2001DA9D3 /* screenshot.png in Resources */,
 				AEB294411ECDC51F0059542D /* Main.storyboard in Resources */,
 			);
@@ -249,7 +238,6 @@
 				AEB294561ECDCE4C0059542D /* MusicViewCell.swift in Sources */,
 				AEB2945C1ECF191A0059542D /* LogInViewController.swift in Sources */,
 				AEB2943C1ECDC51F0059542D /* AppDelegate.swift in Sources */,
-				AEB294641ED5A3FE0059542D /* backupSearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
