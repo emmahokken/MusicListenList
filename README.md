@@ -1,6 +1,8 @@
 # MusicListenList
 Native App Studio - App 6
 
+[![BCH compliance](https://bettercodehub.com/edge/badge/emmahokken/MusicListenList?branch=master)](https://bettercodehub.com/)
+
 App allows users to log in using Firebase. 
 Users can then search for music using the iTunes API [1].
 Many thanks to raywenderlich.com for their clear tutorial on Firebase!
