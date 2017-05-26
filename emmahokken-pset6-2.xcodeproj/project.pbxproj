@@ -21,6 +21,7 @@
 		AEB294601ED44B440059542D /* default-artwork.png in Resources */ = {isa = PBXBuildFile; fileRef = AEB2945F1ED44B440059542D /* default-artwork.png */; };
 		AEB294621ED5A1480059542D /* MusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB294611ED5A1480059542D /* MusicItem.swift */; };
 		AEB294641ED5A3FE0059542D /* backupSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB294631ED5A3FE0059542D /* backupSearchView.swift */; };
+		AEE1E8041ED8E1F2001DA9D3 /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE1E8031ED8E1F2001DA9D3 /* screenshot.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		AEB2945F1ED44B440059542D /* default-artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-artwork.png"; sourceTree = "<group>"; };
 		AEB294611ED5A1480059542D /* MusicItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicItem.swift; sourceTree = "<group>"; };
 		AEB294631ED5A3FE0059542D /* backupSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = backupSearchView.swift; sourceTree = "<group>"; };
+		AEE1E8031ED8E1F2001DA9D3 /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		C97F932A9929E4E1AABCBE7E /* Pods-emmahokken-pset6-2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emmahokken-pset6-2.release.xcconfig"; path = "Pods/Target Support Files/Pods-emmahokken-pset6-2/Pods-emmahokken-pset6-2.release.xcconfig"; sourceTree = "<group>"; };
 		EF20477987B09B3CC907EB3F /* Pods-emmahokken-pset6-2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emmahokken-pset6-2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-emmahokken-pset6-2/Pods-emmahokken-pset6-2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +94,7 @@
 				AEB2943F1ECDC51F0059542D /* Main.storyboard */,
 				AEB294611ED5A1480059542D /* MusicItem.swift */,
 				AEB294551ECDCE4C0059542D /* MusicViewCell.swift */,
+				AEE1E8031ED8E1F2001DA9D3 /* screenshot.png */,
 				AEB2945F1ED44B440059542D /* default-artwork.png */,
 				AEB2945B1ECF191A0059542D /* LogInViewController.swift */,
 				AEB2945D1ECF1AE90059542D /* SearchViewController.swift */,
@@ -180,6 +183,7 @@
 				AEB294521ECDCC8F0059542D /* GoogleService-Info.plist in Resources */,
 				AEB294431ECDC51F0059542D /* Assets.xcassets in Resources */,
 				AEB294601ED44B440059542D /* default-artwork.png in Resources */,
+				AEE1E8041ED8E1F2001DA9D3 /* screenshot.png in Resources */,
 				AEB294411ECDC51F0059542D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
