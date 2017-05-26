@@ -201,7 +201,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             // If no image was found, display default image
             if error != nil {
                 DispatchQueue.main.async {
-                    if let filePath = Bundle.main.path(forResource: "default-artwork", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
+                    if let filePath = Bundle.main.path(forResource: "default-artwork", ofType: "png"), let image = UIImage(contentsOfFile: filePath) {
                         cell.albumArtwork.image = image
                     }
                 }
@@ -271,7 +271,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 // If no image was found, display default image
                 if error != nil {
                     DispatchQueue.main.async {
-                        if let filePath = Bundle.main.path(forResource: "default-artwork", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
+                        if let filePath = Bundle.main.path(forResource: "default-artwork", ofType: "png"), let image = UIImage(contentsOfFile: filePath) {
                             viewMusic.albumArtwork.image = image
                         }
                     }
