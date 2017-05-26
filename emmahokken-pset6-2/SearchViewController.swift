@@ -55,22 +55,23 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     /// Search for music when search button is clicked.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // Search for music.
         lookupMusic(title: searchBar.text!)
+        
+        // Dismiss keyboard.
         view.endEditing(true)
+        
+        // Empty search bar.
         searchBar.text = ""
-        readDatabase()
-        self.tableView.reloadData()
     }
     
     /// Allows user to sign out.
     func signOut() {
-        if FIRAuth.auth()?.currentUser != nil {
-            do {
-                try? FIRAuth.auth()?.signOut()
-                performSegue(withIdentifier: "signOut", sender: nil)
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
+        do {
+            try FIRAuth.auth()?.signOut()
+            performSegue(withIdentifier: "signOut", sender: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
     }
     
@@ -87,17 +88,35 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
             do {
                 let musicObject = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-                print((musicObject?["resultCount"]!)!)
                 
-                
-                // If there is a result, call addMusic function.
-                if let musicDictionary = (musicObject?["results"] as? [NSDictionary])?.first {
-                    print("2", musicObject!)
-                    self.addMusic(musicDictionary: musicDictionary)
-                }
                 // If there are no results, alert user.
-                else if  (musicObject?["resultCount"] as! Int) == 0 {
+                if (musicObject?["resultCount"] as! Int) == 0 {
                     self.alertUser(title: "Whoops!", message: "Song not found")
+                }
+                // If there is a result, call addMusic function.
+                else {
+                    if let musicDictionary = (musicObject?["results"] as? [NSDictionary])?.first {
+                        // If search is part of album (and thus has no trackName), warn user.
+                        if musicDictionary["trackName"] == nil {
+                            self.alertUser(title: "Whoops!", message: "Unable to find song. :(")
+                        }
+                        // If track has no album, warn user.
+                        else if musicDictionary["collectionName"] == nil {
+                            self.alertUser(title: "WHoops!", message: "Unable to find song. :(")
+                        }
+                        // If search has no artist, warn user.
+                        else if musicDictionary["artistName"] == nil {
+                            self.alertUser(title: "Whoops!", message: "Unable to find song. :(")
+                        }
+                        // If search entered is not a song.
+                        else if (musicDictionary["trackName"] as! String) != title {
+                            self.alertUser(title: "Whoops!", message: "Please enter a song name.")
+                        }
+                        // If everything went right, add song to Firebase.
+                        else {
+                            self.addMusic(musicDictionary: musicDictionary)
+                        }
+                    }
                 }
             }
             catch {
@@ -123,7 +142,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Dismiss alert when "Ok" is pressed.
         alert.addAction(UIAlertAction(title: "Ok.", style: .cancel) { (action:UIAlertAction!) in
-            print("Cancel button tapped");
         })
         
         // Present alert.
@@ -157,7 +175,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
     }
     
-    
     // MARK: - Table View Functions
     
     /// Determines number of rows in tableView.
@@ -177,7 +194,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Populate elements in cell.
         cell.trackNameLabel.text = musicItem.trackName
         cell.artistNameLabel.text = musicItem.artistName
-        // Get the image from url.
+        
+        // Get the image from url [1].
         let getArtwork = URLSession.shared.dataTask(with: URL(string: musicItem.artworkUrl30)!) { (data, response, error) in
             
             // If no image was found, display default image
@@ -187,7 +205,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         cell.albumArtwork.image = image
                     }
                 }
-                // if image succeeds give image to movieImage
+            // if image succeeds give image to movieImage
             } else {
                 if let data = data {
                     let image = UIImage(data: data)
@@ -215,8 +233,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return true
     }
     
-    
-    
     /// Allows user to swipe left to delete items.
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
@@ -225,8 +241,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             musicItem.ref?.removeValue()
         }
     }
-    
-    
     
     // MARK: - Segues
     
@@ -261,8 +275,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                             viewMusic.albumArtwork.image = image
                         }
                     }
-                    // If image was succesfully found, give that image to next view
-                } else {
+                }
+                // If image was succesfully found, give that image to next view.
+                else {
                     if let data = data {
                         let image = UIImage(data: data)
                         
@@ -274,9 +289,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             getArtwork.resume()
             
-            
-            // If segue is towards LoginViewController.
-        } else if segue.identifier == "signOut" {
+        }
+        // If segue is towards LoginViewController.
+        else if segue.identifier == "signOut" {
             let signOut = segue.destination as! LogInViewController
         }
         
@@ -287,6 +302,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - Sources
     // [1] http://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
     // [2] https://stackoverflow.com/questions/31457300/swift-prepareforsegue-with-two-different-segues
+    
     
     
 }

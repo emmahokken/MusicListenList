@@ -61,7 +61,9 @@ class DetailViewController: UIViewController {
     /// Action when buyButton is tapped.
     @IBAction func buyButtonAction(_ sender: Any) {
         if let url = NSURL(string: buy) {
-            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil) }
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+        
     }
     
     /// Action when image is tapped [1]
