@@ -6,12 +6,6 @@
 //  Copyright © 2017 Emma Hokken. All rights reserved.
 //
 
-
-// TO DO:
-// Buy link bug fix
-// Log in User view fix
-
-
 import UIKit
 import Firebase
 
@@ -41,17 +35,38 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         searchBar.delegate = self
         
-        // Read database to load info.
+        // Read database to load info and storing it in MusicItem.
         readDatabase()
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // MARK: - Functions
+    
+    /// Reads information from Firebase Database.
+    func readDatabase() {
+        
+        ref.observe(.value, with: { snapshot in
+            
+            // Initialise new items with use of struct.
+            var newItems: [MusicItem] = []
+            
+            // Get information for each of the children in the "music" table
+            for item in snapshot.children {
+                
+                let musicItem = MusicItem(snapshot: item as! FIRDataSnapshot)
+                
+                // Add new item to struct.
+                newItems.append(musicItem)
+            }
+            
+            // Add "newItem" to items struct.
+            self.items = newItems
+            
+            // Reload tableView.
+            self.tableView.reloadData()
+            
+        })
+    }
     
     /// Search for music when search button is clicked.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -63,16 +78,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Empty search bar.
         searchBar.text = ""
-    }
-    
-    /// Allows user to sign out.
-    func signOut() {
-        do {
-            try FIRAuth.auth()?.signOut()
-            performSegue(withIdentifier: "signOut", sender: nil)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
     }
     
     /// Allows user to search for music.
@@ -118,8 +123,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         }
                     }
                 }
-            }
-            catch {
+            } catch {
                 print(error)
             }
         }
@@ -141,7 +145,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // Dismiss alert when "Ok" is pressed.
-        alert.addAction(UIAlertAction(title: "Ok.", style: .cancel) { (action:UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel) { (action:UIAlertAction!) in
         })
         
         // Present alert.
@@ -149,30 +153,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
 
-    /// Reads information from Firebase Database.
-    func readDatabase() {
-        
-        ref.observe(.value, with: { snapshot in
-            
-            // Initialise new items with use of struct.
-            var newItems: [MusicItem] = []
-            
-            // Get information for each of the children in the "music" table
-            for item in snapshot.children {
-                
-                let musicItem = MusicItem(snapshot: item as! FIRDataSnapshot)
-                
-                // Add new item to struct.
-                newItems.append(musicItem)
-            }
-            
-            // Add "newItem" to items struct.
-            self.items = newItems
-            
-            // Reload tableView.
-            self.tableView.reloadData()
-
-        })
+    /// Allows user to sign out.
+    func signOut() {
+        do {
+            try FIRAuth.auth()?.signOut()
+            performSegue(withIdentifier: "signOut", sender: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
     // MARK: - Table View Functions
@@ -198,15 +186,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Get the image from url [1].
         let getArtwork = URLSession.shared.dataTask(with: URL(string: musicItem.artworkUrl30)!) { (data, response, error) in
             
-            // If no image was found, display default image
+            // If no image was found, display default image.
             if error != nil {
                 DispatchQueue.main.async {
                     if let filePath = Bundle.main.path(forResource: "default-artwork", ofType: "png"), let image = UIImage(contentsOfFile: filePath) {
                         cell.albumArtwork.image = image
                     }
                 }
-            // if image succeeds give image to movieImage
-            } else {
+            }
+            // If downloading succeeded, populate cell with downloaded image.
+            else {
                 if let data = data {
                     let image = UIImage(data: data)
                     
@@ -217,7 +206,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
         getArtwork.resume()
-
         
         return cell
     }
@@ -238,6 +226,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if editingStyle == .delete {
             let musicItem = items[indexPath.row]
+            
+            // Remove musicItem from Firebase.
             musicItem.ref?.removeValue()
         }
     }
@@ -256,38 +246,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let musicItem = items[tableView.indexPathForSelectedRow!.row]
             
             // Convert trackCount integer to String.
-            let tracount = String(musicItem.trackCount)
+            let trackCount = String(musicItem.trackCount)
             
             // Take information from cell with you to next view.
-            viewMusic.album = musicItem.collectionName
-            viewMusic.artist = musicItem.artistName
-            viewMusic.name = musicItem.trackName
-            viewMusic.count = tracount
+            viewMusic.collectionName = musicItem.collectionName
+            viewMusic.artistName = musicItem.artistName
+            viewMusic.trackName = musicItem.trackName
+            viewMusic.trackCount = trackCount
             viewMusic.buy = musicItem.trackViewUrl
-            
-            // Get the image from url.
-            let getArtwork = URLSession.shared.dataTask(with: URL(string: musicItem.artworkUrl100)!) { (data, response, error) in
-                
-                // If no image was found, display default image
-                if error != nil {
-                    DispatchQueue.main.async {
-                        if let filePath = Bundle.main.path(forResource: "default-artwork", ofType: "png"), let image = UIImage(contentsOfFile: filePath) {
-                            viewMusic.albumArtwork.image = image
-                        }
-                    }
-                }
-                // If image was succesfully found, give that image to next view.
-                else {
-                    if let data = data {
-                        let image = UIImage(data: data)
-                        
-                        DispatchQueue.main.async {
-                            viewMusic.albumArtwork.image = image
-                        }
-                    }
-                }
-            }
-            getArtwork.resume()
+            viewMusic.art = musicItem.artworkUrl100
             
         }
         // If segue is towards LoginViewController.
@@ -296,8 +263,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
     }
-    
-    
 
     // MARK: - Sources
     // [1] http://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift

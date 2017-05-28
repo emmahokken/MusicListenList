@@ -14,12 +14,12 @@ class DetailViewController: UIViewController {
 
     // MARK: - Variables
     
-    var album: String = ""
-    var artist: String = ""
-    var count: String = ""
-    var name: String = ""
-    var buy: String = ""
-    var art = UIImage()
+    var collectionName = String()
+    var artistName = String()
+    var trackCount = String()
+    var trackName = String()
+    var buy = String()
+    var art = String()
     
     // MARK: - Outlets
     
@@ -32,28 +32,47 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Create sign out button.
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
         
         // Set title to trackName.
-        navigationItem.title = name
+        navigationItem.title = trackName
         
         // Populate labels with info from SearchViewController.
-        albumArtwork.image = art
-        artistLabel.text = artist
-        albumLabel.text = album
-        trackCountLabel.text = count
+        artistLabel.text = artistName
+        albumLabel.text = collectionName
+        trackCountLabel.text = trackCount
+        
+        // Download image from url.
+        let getArtwork = URLSession.shared.dataTask(with: URL(string: art)!) { (data, response, error) in
+            
+            // If no image was found, display default image
+            if error != nil {
+                DispatchQueue.main.async {
+                    if let filePath = Bundle.main.path(forResource: "default-artwork", ofType: "png"), let image = UIImage(contentsOfFile: filePath) {
+                        self.albumArtwork.image = image
+                    }
+                }
+            }
+            // If image was succesfully found, display image.
+            else {
+                if let data = data {
+                    let image = UIImage(data: data)
+                    
+                    DispatchQueue.main.async {
+                        self.albumArtwork.image = image
+                    }
+                }
+            }
+        }
+        getArtwork.resume()
+
         
         // Initialise ability to tap image to view it fullscreen.
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.imageTapped(_:)))
         albumArtwork.addGestureRecognizer(pictureTap)
         albumArtwork.isUserInteractionEnabled = true
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Actions
@@ -63,10 +82,9 @@ class DetailViewController: UIViewController {
         if let url = NSURL(string: buy) {
             UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         }
-        
     }
     
-    /// Action when image is tapped [1]
+    /// Action to view image fullscreen when image is tapped [1]
     @IBAction func imageTapped (_ sender: UITapGestureRecognizer) {
             let imageView = sender.view as! UIImageView
             let newImageView = UIImageView(image: imageView.image)
@@ -94,9 +112,9 @@ class DetailViewController: UIViewController {
     func signOut() {
         do {
             try FIRAuth.auth()?.signOut()
-            performSegue(withIdentifier: "signOut", sender: name)
+            performSegue(withIdentifier: "signOut", sender: nil)
         } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+            print ("Error signing out: %@", signOutError.localizedDescription)
         }
     }
     

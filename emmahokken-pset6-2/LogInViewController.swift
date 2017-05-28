@@ -5,6 +5,12 @@
 //  Created by Emma Hokken on 18-05-17.
 //  Copyright © 2017 Emma Hokken. All rights reserved.
 //
+//  Music Listen List is an app that allows users to search for music.
+//  The app autmomaticall rembmbers that music. When the user presses the
+//  cell with the chosen song, more information about the song is displayed.
+//  Here, the user can click a "Buy!" button that transports them to Apple Music.
+//  Once there, the user can decide to buy the music.
+//
 
 import UIKit
 import Firebase
@@ -24,82 +30,61 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Specify reference to database.
         ref = FIRDatabase.database().reference()
+        
+        // Function to let the user stay logged in.
         stayLoggedIn()
         
         // Hide back button (if applicable).
         self.navigationItem.hidesBackButton = true
         
+        // Dismiss keyboard when tapping anywhre on screen.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LogInViewController.dismissKeybard))
+        view.addGestureRecognizer(tap)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
     // MARK: - Actions
     
+    // WHen signIn button is pressed, log user in.
     @IBAction func signInButtonAction(_ sender: Any) {
         login()
     }
     
-    
+    // When register button is pressed, pop-up alert and register user.
     @IBAction func registerButtonAction(_ sender: Any) {
         
-//        let alert = UIAlertController(title: "Register",
-//                                      message: "Register",
-//                                      preferredStyle: .alert)
-//        
-//        let saveAction = UIAlertAction(title: "Save",
-//                                       style: .default) { action in
-//                                        
-//        }
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel",
-//                                         style: .default)
-//        
-//        alert.addTextField { textEmail in
-//            textEmail.placeholder = "Enter your email"
-//        }
-//        
-//        alert.addTextField { textPassword in
-//            textPassword.isSecureTextEntry = true
-//            textPassword.placeholder = "Enter your password"
-//        }
-//        
-//        alert.addAction(saveAction)
-//        alert.addAction(cancelAction)
-//        
-//        present(alert, animated: true, completion: nil)
-    
-        let alert = UIAlertController(title: "welcome", message: "enter your the username and password you'd like to use", preferredStyle: .alert)
+        // Present alert with message.
+        let alert = UIAlertController(title: "Welcome!", message: "Enter the email and password you'd like to use.", preferredStyle: .alert)
         
+        // Add email textfield.
         _ = alert.addTextField { (textField) in
-            textField.placeholder = "email"
+            textField.placeholder = "Email"
         }
         
+        // Add password textfield with secure typing.
         _ = alert.addTextField { (textField) in
             textField.placeholder = "password"
             textField.isSecureTextEntry = true
         }
         
+        // When user presses "Ok", register user.
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let email = alert?.textFields![0]
             let password = alert?.textFields![1]
-            print("Text field: \(email?.text)")
             
+            // If email or password field are empty, alert user
             if email?.text! == "" || password?.text! == "" {
-                print("Empty String")
+                self.alertUser(title: "Whoops!", message: "You must provide an email and password.")
             } else {
                 self.signUpUser(email: (email?.text)!, password: (password?.text)!)
                 email?.text = ""
-                
             }
             
         }))
         
-        // allows for cancel action [1]
+        // Allows for cancel action [1].
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
             print("Cancel button tapped");
         })
@@ -110,12 +95,17 @@ class LogInViewController: UIViewController {
     
     // MARK: - Functions
     
-    /// allows user to register
+    /// Dismiss keyboard when tapping anywhre ont hte screen.
+    func dismissKeybard() {
+        view.endEditing(true)
+    }
+    
+    /// Allows user to register.
     func signUpUser(email: String, password: String) {
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             // if the error is not empty, print it
             if error != nil {
-                print(error!)
+                self.alertUser(title: "Whoops!", message: "Unable to register user.")
                 return
             }
             guard (user?.uid) != nil else {
@@ -128,13 +118,12 @@ class LogInViewController: UIViewController {
             // update new info into table
             userRef.updateChildValues(values, withCompletionBlock: { (error, ref) in
                 if error != nil {
-                    print(error!)
+                    self.alertUser(title: "Whoops!", message: "Unable to register user.")
                     return
                 }
                 // if things went succesfully, send user to next window
                 else {
                     self.performSegue(withIdentifier: "signIn", sender: self)
-                    print("User sigend up!")
                 }
                 
                 self.dismiss(animated: true, completion: nil)
@@ -142,22 +131,21 @@ class LogInViewController: UIViewController {
         })
     }
     
-    /// allows user to log in
+    /// Allows user to log in.
     func login() {
         FIRAuth.auth()?.signIn(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in
+            // If an error occured, alert user.
             if error != nil {
-                print(error!)
+                self.alertUser(title: "Whoops!", message: "Unable to log in user.")
                 return
             } else {
-                print("User logged in!")
                 self.performSegue(withIdentifier: "signIn", sender: self)
             }})
-        
         
         self.dismiss(animated: true, completion: nil )
     }
     
-    /// let user stay logged in [2]
+    /// Let user stay logged in [2].
     func stayLoggedIn() {
         let currentUser = FIRAuth.auth()?.currentUser
         if currentUser != nil {
@@ -165,6 +153,18 @@ class LogInViewController: UIViewController {
         }
     }
     
+    /// Function to alert users with a custom message.
+    func alertUser(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // Dismiss alert when "Ok" is pressed.
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel) { (action:UIAlertAction!) in
+        })
+        
+        // Present alert.
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
     // MARK: - Sources
     // [1] http://swiftdeveloperblog.com/code-examples/create-uialertcontroller-with-ok-and-cancel-buttons-in-swift/
