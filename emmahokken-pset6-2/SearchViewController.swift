@@ -37,14 +37,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Read database to load info and storing it in MusicItem.
         readDatabase()
-        
     }
 
     // MARK: - Functions
     
     /// Reads information from Firebase Database.
     func readDatabase() {
-        
         ref.observe(.value, with: { snapshot in
             
             // Initialise new items with use of struct.
@@ -64,12 +62,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             // Reload tableView.
             self.tableView.reloadData()
-            
         })
     }
     
     /// Search for music when search button is clicked.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
         // Search for music.
         lookupMusic(title: searchBar.text!)
         
@@ -89,7 +87,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Url that is used to search for music. Search is limited to one result.
         let url = URL(string: "https://itunes.apple.com/search?term="+search+"&limit=1")
         
-        //
+        // Start retreiving information from URL.
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
             do {
                 let musicObject = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary

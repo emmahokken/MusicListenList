@@ -59,12 +59,12 @@ class LogInViewController: UIViewController {
         let alert = UIAlertController(title: "Welcome!", message: "Enter the email and password you'd like to use.", preferredStyle: .alert)
         
         // Add email textfield.
-        _ = alert.addTextField { (textField) in
+        alert.addTextField { (textField) in
             textField.placeholder = "Email"
         }
         
         // Add password textfield with secure typing.
-        _ = alert.addTextField { (textField) in
+        alert.addTextField { (textField) in
             textField.placeholder = "password"
             textField.isSecureTextEntry = true
         }
