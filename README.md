@@ -9,7 +9,7 @@ Many thanks to raywenderlich.com for their clear tutorial on Firebase!
 
 NOTE: I had to downgrade Firebase to version 3.15 because of some major bugs. 
 
-![alt screenshot](emmahokken-pset6-2/screenshot.png)
+![alt screenshot](emmahokken-pset6-2/Assets.xcassets/screenshot.imageset/screenshot.png)
 
 Sources:
 
